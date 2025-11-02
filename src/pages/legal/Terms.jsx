@@ -207,10 +207,10 @@ const Terms = () => {
             <li>
               Email:{" "}
               <a
-                href="mailto:legal@Tfoursolutions.com"
+                href="mailto:legal@TfourTechnologies.com"
                 className="text-[var(--color-primary)] hover:underline"
               >
-                legal@Tfoursolutions.com
+                legal@TfourTechnologies.com
               </a>
             </li>
             <li>

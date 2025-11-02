@@ -19,21 +19,18 @@ import Resources from "./pages/resources/index.jsx";
 
 // Solutions
 import Solutions from "./pages/solutions/index.jsx";
+import Dashboard from "./pages/auth/Dashboard.jsx"; // Added under Solutions
 import AIDemos from "./pages/solutions/AI-Demos.jsx";
 import CaseStudies from "./pages/solutions/CaseStudies.jsx";
 import Services from "./pages/solutions/Services.jsx";
 import Portfolio from "./pages/solutions/Portfolio.jsx";
 import AIShowcase from "./components/sections/AIShowcase.jsx";
 
-// AI Detail Pages - ADD THESE FOUR
+// AI Detail Pages
 import ChatbotDetails from "./pages/solutions/ChatbotDetails.jsx";
 import DocumentAI from "./pages/solutions/DocumentAI.jsx";
 import CrmLeadAI from "./pages/solutions/CrmLeadAI.jsx";
 import PrivateLLM from "./pages/solutions/PrivateLLM.jsx";
-
-// Auth Pages
-import Register from "./pages/auth/Register.jsx";
-import Dashboard from "./pages/auth/Dashboard.jsx";
 
 // Legal Pages
 import PrivacyPolicy from "./pages/legal/PrivacyPolicy.jsx";
@@ -59,6 +56,7 @@ function App() {
         <Route path="/resources" element={<Resources />} />
         {/* Solutions main and subpages */}
         <Route path="/solutions" element={<Solutions />} />
+        <Route path="/solutions/dashboard" element={<Dashboard />} /> {/* Dashboard: first under solutions */}
         <Route path="/solutions/ai-demos" element={<AIDemos />} />
         <Route path="/solutions/case-studies" element={<CaseStudies />} />
         <Route path="/solutions/services" element={<Services />} />
@@ -70,8 +68,6 @@ function App() {
         <Route path="/solutions/crm-lead-ai" element={<CrmLeadAI />} />
         <Route path="/solutions/private-llm" element={<PrivateLLM />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />

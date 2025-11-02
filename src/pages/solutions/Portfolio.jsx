@@ -18,12 +18,12 @@ const projects = [
     ],
   },
   {
-    name: "SmartCricket",
+    name: "GridironIQ",
     sector: "Sports/AI Analytics",
-    desc: "Real-time athlete performance and fan engagement hub—doubling retention and eliminating 70% of manual reporting.",
+    desc: "Real-time football athlete performance and fan engagement hub—doubling retention and eliminating 70% of manual reporting.",
     highlights: [
-      "Live match dashboard with AI summaries",
-      "Player merchandise recommendation engine",
+      "Game dashboard with live AI summaries",
+      "Player merchandise and ticket recommendation engine",
     ],
   },
   {
@@ -42,8 +42,8 @@ const testimonials = [
   },
   {
     quote:
-      "Their AI pipeline for our cricket platform was a game changer—users love the live summaries and integrated fan engagement.",
-    by: "M. Singh, CTO, SmartCricket",
+      "Their AI pipeline for our football analytics platform delivered instant data visualization and boosted user engagement across the US.",
+    by: "A. Baker, CTO, GridironIQ",
   },
 ];
 
@@ -78,12 +78,14 @@ const Portfolio = () => (
           text-[var(--color-primary)]
         "
       >
-        Refining Success, Project by Project
+        Proudly Made in the USA
       </h1>
       <p className="text-lg md:text-xl opacity-85 mb-6">
-        Tfour’s portfolio spans AI, automation, and digital innovation for
-        global enterprises.
+        Tfour’s portfolio spans AI, automation, and digital innovation for American enterprises and beyond.
       </p>
+      <div className="font-semibold text-[var(--color-primary)] uppercase tracking-wider mb-2">
+        Innovation That Powers America
+      </div>
     </section>
 
     {/* Stats Section */}

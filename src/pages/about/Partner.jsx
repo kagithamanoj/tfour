@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+const FORMSPREE = "https://formspree.io/f/mnnoldld";
+
 const Partner = () => {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -9,14 +11,31 @@ const Partner = () => {
     phone: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError(null);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true); // Simulated submission
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(FORMSPREE, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData }),
+      });
+      if (!response.ok) throw new Error("Failed to submit.");
+      setSubmitted(true);
+    } catch (err) {
+      setError("Submission failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -112,6 +131,7 @@ const Partner = () => {
                   "
                   value={formData.organization}
                   onChange={handleChange}
+                  disabled={loading}
                 />
               </div>
 
@@ -136,6 +156,7 @@ const Partner = () => {
                   "
                   value={formData.contact}
                   onChange={handleChange}
+                  disabled={loading}
                 />
               </div>
 
@@ -160,6 +181,7 @@ const Partner = () => {
                   "
                   value={formData.email}
                   onChange={handleChange}
+                  disabled={loading}
                 />
               </div>
 
@@ -182,6 +204,7 @@ const Partner = () => {
                   "
                   value={formData.phone}
                   onChange={handleChange}
+                  disabled={loading}
                 />
               </div>
 
@@ -205,15 +228,24 @@ const Partner = () => {
                   "
                   value={formData.message}
                   onChange={handleChange}
+                  disabled={loading}
                 />
               </div>
+
+              {/* Error */}
+              {error && (
+                <div className="text-red-500 font-semibold text-sm py-2">
+                  {error}
+                </div>
+              )}
 
               {/* Button */}
               <button
                 type="submit"
                 className="btn-primary w-full mt-2 text-lg py-3"
+                disabled={loading}
               >
-                Request Partnership
+                {loading ? "Submitting..." : "Request Partnership"}
               </button>
             </form>
           )}

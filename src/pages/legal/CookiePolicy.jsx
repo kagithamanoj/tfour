@@ -240,10 +240,10 @@ const CookiePolicy = () => {
               <li>
                 By email:{" "}
                 <a
-                  href="mailto:reachus@Tfoursolutions.com"
+                  href="mailto:reachus@TfourTechnologies.com"
                   className="text-[var(--color-primary)] hover:underline"
                 >
-                  reachus@Tfoursolutions.com
+                  reachus@TfourTechnologies.com
                 </a>
               </li>
               <li>

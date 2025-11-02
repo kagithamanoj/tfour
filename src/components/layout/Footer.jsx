@@ -26,7 +26,9 @@ const Footer = () => (
           <Link to="/" className="flex items-center mb-4">
             <img src={logo} alt="Tfour Technologies Logo" className="h-8" />
           </Link>
-          <p className="opacity-80">Beyond Automation. True Intelligence.</p>
+          <p className="opacity-80 mb-3">
+            Beyond Automation. True Intelligence.
+          </p>
         </div>
 
         {/* Quick Links */}
@@ -133,8 +135,21 @@ const Footer = () => (
           border-t border-[var(--color-footer-header-border)]
         "
       >
-        <p className="text-sm text-center sm:text-left opacity-70 mb-4 sm:mb-0">
-          © {new Date().getFullYear()} Tfour Technologies. All rights reserved.
+        <p className="text-sm text-center sm:text-left opacity-70 mb-4 sm:mb-0 flex items-center gap-2">
+          <span>
+            © {new Date().getFullYear()} Tfour Technologies. All rights reserved. &nbsp;|&nbsp; 
+          </span>
+          <span
+            className="px-3 py-1 rounded-md font-bold uppercase text-white"
+            style={{
+              background: '#174ea6',
+              border: '2px solid #174ea6',
+              fontSize: '0.92em',
+              letterSpacing: '2px'
+            }}
+          >
+            🇺🇸 Made in USA
+          </span>
         </p>
 
         {/* Social Links */}

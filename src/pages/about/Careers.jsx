@@ -1,42 +1,12 @@
 import React, { useState } from "react";
 
 const openings = [
-  {
-    title: "Cloud DevOps Engineer",
-    type: "Full-time · Remote",
-    description:
-      "Design and implement scalable Azure/AWS infrastructure, build automation pipelines, and support global clients. Strong scripting and CI/CD experience required.",
-  },
-  {
-    title: "AI/ML Developer",
-    type: "Full-time · Remote/Hybrid",
-    description:
-      "Develop and deploy advanced AI/ML models, work with NLP and cloud APIs, and deliver automation solutions to business partners.",
-  },
-  {
-    title: "Frontend React Engineer",
-    type: "Full-time · Remote",
-    description:
-      "Craft beautiful, performant UIs using React, Tailwind, and modern web tooling. Collaborate closely with design/product teams.",
-  },
-  {
-    title: "Backend Node.js Engineer",
-    type: "Full-time · Remote/Hybrid",
-    description:
-      "Build high-performance backend systems, APIs, and serverless functions using Node.js and modern cloud tools.",
-  },
-  {
-    title: "Data Engineer",
-    type: "Full-time · Remote",
-    description:
-      "Design reliable ETL pipelines, data lakes, and streaming solutions to drive analytics and business insights.",
-  },
-  {
-    title: "AI Solutions Architect",
-    type: "Consultant · Remote",
-    description:
-      "Shape AI strategies and architectures across projects, designing scalable and industry-compliant AI systems.",
-  },
+  { title: "Cloud DevOps Engineer", type: "Full-time · Remote", description: "Design and implement scalable Azure/AWS infrastructure, build automation pipelines, and support global clients. Strong scripting and CI/CD experience required." },
+  { title: "AI/ML Developer", type: "Full-time · Remote/Hybrid", description: "Develop and deploy advanced AI/ML models, work with NLP and cloud APIs, and deliver automation solutions to business partners." },
+  { title: "Frontend React Engineer", type: "Full-time · Remote", description: "Craft beautiful, performant UIs using React, Tailwind, and modern web tooling. Collaborate closely with design/product teams." },
+  { title: "Backend Node.js Engineer", type: "Full-time · Remote/Hybrid", description: "Build high-performance backend systems, APIs, and serverless functions using Node.js and modern cloud tools." },
+  { title: "Data Engineer", type: "Full-time · Remote", description: "Design reliable ETL pipelines, data lakes, and streaming solutions to drive analytics and business insights." },
+  { title: "AI Solutions Architect", type: "Consultant · Remote", description: "Shape AI strategies and architectures across projects, designing scalable and industry-compliant AI systems." },
 ];
 
 const departments = [
@@ -54,31 +24,11 @@ const departments = [
 ];
 
 const values = [
-  {
-    title: "Absolute Ownership",
-    description:
-      "We take full responsibility for outcomes and act as reliable partners for our clients and team.",
-  },
-  {
-    title: "Teamwork",
-    description:
-      "Every win is collective. We move as a unit, bringing out the best in one another.",
-  },
-  {
-    title: "Integrity",
-    description:
-      "We work to achieve, not just deliver — transparent, honest, and consistent in every commitment.",
-  },
-  {
-    title: "Continuous Learning",
-    description:
-      "We stay curious, stay humble, and evolve constantly through shared knowledge and growth.",
-  },
-  {
-    title: "Keep it Simple",
-    description:
-      "We thrive when solutions are elegant and processes effortless — simplicity drives our success.",
-  },
+  { title: "Absolute Ownership", description: "We take full responsibility for outcomes and act as reliable partners for our clients and team." },
+  { title: "Teamwork", description: "Every win is collective. We move as a unit, bringing out the best in one another." },
+  { title: "Integrity", description: "We work to achieve, not just deliver — transparent, honest, and consistent in every commitment." },
+  { title: "Continuous Learning", description: "We stay curious, stay humble, and evolve constantly through shared knowledge and growth." },
+  { title: "Keep it Simple", description: "We thrive when solutions are elegant and processes effortless — simplicity drives our success." },
 ];
 
 const perks = [
@@ -90,28 +40,14 @@ const perks = [
   "Learning Resources & Upskilling Support",
 ];
 
+// Updated team member names for an American focus
 const testimonials = [
-  {
-    name: "Ananya Patel",
-    role: "AI Developer",
-    quote:
-      "Tfour has given me the perfect balance between creativity and structure. Every idea is heard and respected.",
-  },
-  {
-    name: "Rahul Sharma",
-    role: "Cloud Architect",
-    quote:
-      "This team builds fast and thinks even faster! The innovation culture here has completely changed the way I work.",
-  },
-  {
-    name: "Sofia Ali",
-    role: "Project Manager",
-    quote:
-      "There’s a genuine sense of collaboration here. The leadership team guides but lets you make bold decisions.",
-  },
+  { name: "Emily Carter", role: "AI Developer", quote: "Tfour has given me the perfect balance between creativity and structure. Every idea is heard and respected." },
+  { name: "Jacob Miller", role: "Cloud Architect", quote: "This team builds fast and thinks even faster! The innovation culture here has completely changed the way I work." },
+  { name: "Sophia Williams", role: "Project Manager", quote: "There’s a genuine sense of collaboration here. The leadership team guides but lets you make bold decisions." },
 ];
 
-const API_ENDPOINT = "https://api.Tfoursolutions.com/careers/apply";
+const FORMSPREE = "https://formspree.io/f/mnnoldld";
 
 const Careers = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -138,10 +74,10 @@ const Careers = () => {
     }
     setLoading(true);
     try {
-      const response = await fetch(API_ENDPOINT, {
+      const response = await fetch(FORMSPREE, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData }),
       });
       if (!response.ok) throw new Error("Failed to submit application.");
       setSubmitted(true);
@@ -161,15 +97,9 @@ const Careers = () => {
       "
     >
       <div className="max-w-5xl mx-auto px-4">
-        <h1
-          className="
-            text-5xl font-extrabold mb-8 text-center
-            text-[var(--color-primary)]
-          "
-        >
+        <h1 className="text-5xl font-extrabold mb-8 text-center text-[var(--color-primary)]">
           Careers at Tfour
         </h1>
-
         <p className="text-xl mb-12 text-center max-w-2xl mx-auto opacity-85">
           Build AI. Shape the future. Grow with a diverse and talented team of
           innovators making technology simpler, smarter, and more human.
@@ -177,13 +107,7 @@ const Careers = () => {
 
         {/* Company Values */}
         <div className="mb-16">
-          <h2
-            className="
-              text-3xl font-bold mb-6
-              text-[var(--color-primary)]
-              text-center
-            "
-          >
+          <h2 className="text-3xl font-bold mb-6 text-[var(--color-primary)] text-center">
             Values that Define Us
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
@@ -203,23 +127,14 @@ const Careers = () => {
 
         {/* Department Categories */}
         <div className="mb-16">
-          <h2
-            className="
-              text-3xl font-bold mb-6 text-center
-              text-[var(--color-primary)]
-            "
-          >
+          <h2 className="text-3xl font-bold mb-6 text-center text-[var(--color-primary)]">
             Teams & Departments
           </h2>
           <div className="flex flex-wrap justify-center gap-3">
             {departments.map((dept) => (
               <span
                 key={dept}
-                className="
-                  px-4 py-2 rounded-full text-sm
-                  bg-[var(--color-card)] border border-[var(--color-border)]
-                  opacity-85
-                "
+                className="px-4 py-2 rounded-full text-sm bg-[var(--color-card)] border border-[var(--color-border)] opacity-85"
               >
                 {dept}
               </span>
@@ -229,21 +144,13 @@ const Careers = () => {
 
         {/* Openings */}
         <div className="mb-16">
-          <h2
-            className="
-              text-3xl font-bold mb-6
-              text-[var(--color-primary)]
-            "
-          >
+          <h2 className="text-3xl font-bold mb-6 text-[var(--color-primary)]">
             Current Openings
           </h2>
           {openings.map((job, idx) => (
             <div
               key={idx}
-              className="
-                card bg-[var(--color-card)]
-                border border-[var(--color-border)] rounded-xl mb-6 p-6 shadow-md
-              "
+              className="card bg-[var(--color-card)] border border-[var(--color-border)] rounded-xl mb-6 p-6 shadow-md"
             >
               <h3 className="text-2xl font-semibold text-[var(--color-primary)] mb-2">
                 {job.title}
@@ -353,8 +260,7 @@ const Careers = () => {
             </form>
           ) : (
             <div className="p-6 rounded-lg text-center bg-[var(--color-primary)] text-white shadow-md">
-              Thank you! Your application has been received. We’ll be in touch
-              soon.
+              Thank you! Your application has been received. We’ll be in touch soon.
             </div>
           )}
         </div>

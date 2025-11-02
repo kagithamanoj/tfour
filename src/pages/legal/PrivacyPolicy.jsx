@@ -251,10 +251,10 @@ const PrivacyPolicy = () => {
             <li>
               Email:{" "}
               <a
-                href="mailto:privacy@Tfoursolutions.com"
+                href="mailto:privacy@TfourTechnologies.com"
                 className="text-[var(--color-primary)] hover:underline"
               >
-                privacy@Tfoursolutions.com
+                privacy@TfourTechnologies.com
               </a>
             </li>
             <li>
