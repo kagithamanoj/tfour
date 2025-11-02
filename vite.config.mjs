@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react';
 // import { VitePWA } from 'vite-plugin-pwa'; // Uncomment if using PWA
 
 export default defineConfig({
+  base: '/', // use '/' for custom domains or GitHub user pages
   plugins: [
     react(),
     // basicSsl(),
