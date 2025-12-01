@@ -96,13 +96,42 @@ function App() {
       </Routes>
       <CookieConsent
         location="bottom"
-        buttonText="Accept"
-        style={{ background: "#101014" }}
-        buttonStyle={{ background: "#ff9100", color: "#fff", borderRadius: "4px", fontWeight: "600" }}
+        buttonText="Accept & Continue"
+        style={{
+          background: "rgba(15, 23, 42, 0.95)",
+          backdropFilter: "blur(16px)",
+          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+          color: "#94a3b8",
+          fontSize: "14px",
+          zIndex: 100,
+          padding: "10px 20px",
+        }}
+        buttonStyle={{
+          background: "linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)",
+          color: "#ffffff",
+          fontSize: "14px",
+          fontWeight: "600",
+          borderRadius: "9999px",
+          padding: "12px 32px",
+          margin: "0 0 0 20px",
+          boxShadow: "0 4px 12px rgba(59, 130, 246, 0.3)",
+          border: "none",
+          transition: "transform 0.2s",
+        }}
         expires={365}
       >
-        This website uses cookies to enhance the user experience.{" "}
-        <a href="/cookie-policy" style={{ color: "#ff9100" }}>Read our policy</a>.
+        <div className="flex items-center gap-3">
+          <span className="text-xl">🍪</span>
+          <span>
+            We use cookies to personalize your experience and analyze site traffic. By continuing, you agree to our{" "}
+            <a
+              href="/cookie-policy"
+              className="text-white font-medium hover:text-blue-400 transition-colors underline decoration-blue-500/50"
+            >
+              Cookie Policy
+            </a>.
+          </span>
+        </div>
       </CookieConsent>
       <AIChatbot />
       <Footer />
