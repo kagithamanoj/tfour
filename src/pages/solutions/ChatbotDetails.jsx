@@ -1,182 +1,171 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaRobot, FaShieldAlt, FaCogs, FaComments, FaCheckCircle, FaLock, FaPlug } from "react-icons/fa";
+import GlassCard from "../../components/common/GlassCard";
 
-const faqs = [
-  {
-    question: "What makes Tfour AI chatbots unique?",
-    answer:
-      "Tfour chatbots deliver enterprise-grade conversations with multi-model support (OpenAI, Claude, open-source LLMs), seamless analytics, advanced context recall, and 100% brand customization. Our bots integrate with workflows, helping teams deliver instant, consistent experiences across digital and internal channels.",
-  },
-  {
-    question: "How do you handle security and compliance?",
-    answer:
-      "We deploy on both secure cloud and on-prem infrastructures, ensuring no data is stored without consent. Configurations enforce GDPR, HIPAA, SOC2, and more. Our privacy-driven chat routing guarantees compliance for regulated industries.",
-  },
-  {
-    question: "What customizations are possible?",
-    answer:
-      "Everything—from conversation personality and brand styling to integrations (Zendesk, Slack, APIs), multilingual support, human fallback, and workflow logic. Tfour empowers developers and non-developers with a visual configuration dashboard.",
-  },
-  {
-    question: "Can your chatbots handle voice and rich media?",
-    answer:
-      "Yes! Our chatbots support file uploads, voice input, code snippets, media previews, and scheduling—all in real time.",
-  },
-  {
-    question: "What are common use cases?",
-    answer:
-      "Smart support portals, internal helpdesks, troubleshooting assistants, onboarding bots, retail concierges, HR FAQs, and sales engagement agents.",
-  },
+const tabs = [
+  { id: "features", label: "Core Features", icon: <FaCogs /> },
+  { id: "integrations", label: "Integrations", icon: <FaPlug /> },
+  { id: "security", label: "Security & Compliance", icon: <FaShieldAlt /> },
 ];
 
-function ChatbotDetails() {
+const features = [
+  { title: "Multi-LLM Support", desc: "Switch between GPT-4, Claude 3, and Llama 3 instantly based on cost/performance needs." },
+  { title: "Context Awareness", desc: "Remembers user history and preferences across sessions for truly personalized support." },
+  { title: "Human Handoff", desc: "Seamlessly escalates complex issues to live agents with full conversation context." },
+  { title: "Multilingual", desc: "Native support for 50+ languages with automatic detection and translation." },
+];
+
+const integrations = [
+  { name: "Salesforce", icon: "https://cdn.worldvectorlogo.com/logos/salesforce-2.svg" },
+  { name: "HubSpot", icon: "https://cdn.worldvectorlogo.com/logos/hubspot-1.svg" },
+  { name: "Slack", icon: "https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg" },
+  { name: "Microsoft Teams", icon: "https://cdn.worldvectorlogo.com/logos/microsoft-teams-1.svg" },
+  { name: "Zendesk", icon: "https://cdn.worldvectorlogo.com/logos/zendesk-1.svg" },
+  { name: "Shopify", icon: "https://cdn.worldvectorlogo.com/logos/shopify.svg" },
+];
+
+const ChatbotDetails = () => {
+  const [activeTab, setActiveTab] = useState("features");
+
   return (
-    <section
-      className="
-        min-h-screen w-full py-20
-        bg-[var(--color-bg)] text-[var(--color-text)]
-        transition-colors duration-300
-      "
-    >
+    <section className="min-h-screen text-[var(--color-text)] bg-[#0F172A] pb-20">
+      {/* Hero Section */}
+      <div className="relative py-32 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-transparent pointer-events-none"></div>
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-block mb-6 p-4 rounded-full bg-blue-500/10 border border-blue-500/20">
+              <FaRobot className="text-4xl text-blue-400" />
+            </div>
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Intelligent Chatbots
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-10">
+              More than just a chat window. A fully integrated AI agent that understands your business,
+              protects your data, and delights your customers.
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
       <div className="max-w-6xl mx-auto px-4">
-        <h1
-          className="
-            text-5xl font-extrabold mb-8
-            text-[var(--color-primary)]
-          "
-        >
-          Tfour AI Chatbot Solutions
-        </h1>
-
-        <p
-          className="
-            mb-12 text-lg max-w-3xl
-            opacity-85
-          "
-        >
-          Tfour is transforming conversational AI for enterprises. Our
-          platform merges modern large language models with robust deployment,
-          compliance, and branded UX. From scalable customer chatbots to secured
-          internal systems, Tfour Technologies bring measurable outcomes.
-        </p>
-
-        {/* Enterprise features */}
-        <div className="mb-10">
-          <h2
-            className="
-              text-3xl font-semibold mb-3
-              text-[var(--color-primary)]
-            "
-          >
-            Enterprise‑Ready Features
-          </h2>
-          <ul className="list-disc pl-6 space-y-1 opacity-90">
-            <li>Multi-LLM architecture: OpenAI, Claude, OSS & custom models</li>
-            <li>Memory, analytics dashboard, and live monitoring</li>
-            <li>Omnichannel: Web, app, Slack, WhatsApp, Teams</li>
-            <li>Custom workflow triggers & backend integrations</li>
-            <li>White-label branding, voice and document workflows</li>
-            <li>Agent handoff, escalation, and moderation tools</li>
-            <li>No data retention by default; full compliance features</li>
-          </ul>
+        {/* Tabs */}
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`
+                flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-300
+                ${activeTab === tab.id
+                  ? "bg-blue-600 text-white shadow-lg shadow-blue-500/25 scale-105"
+                  : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
+                }
+              `}
+            >
+              {tab.icon}
+              <span>{tab.label}</span>
+            </button>
+          ))}
         </div>
 
-        {/* Success Stories */}
-        <div className="mb-10">
-          <h2
-            className="
-              text-3xl font-semibold mb-3
-              text-[var(--color-primary)]
-            "
+        {/* Content Area */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
           >
-            Recent Success Stories
-          </h2>
-          <ul className="list-disc pl-6 space-y-1 opacity-90">
-            <li>
-              Retail chatbot suite—36% faster support resolutions, 24/7
-              multilingual engagement across web and mobile apps.
-            </li>
-            <li>
-              Internal LLM assistant for a financial institution—SOC2-compliant,
-              saving 2000+ analyst hours annually.
-            </li>
-            <li>
-              HR onboarding assistant deployed in Microsoft Teams with live
-              document Q&A capabilities.
-            </li>
-          </ul>
-        </div>
-
-        {/* FAQ Section */}
-        <div className="mb-10">
-          <h2
-            className="
-              text-3xl font-semibold mb-4
-              text-[var(--color-primary)]
-            "
-          >
-            FAQ
-          </h2>
-          <div className="space-y-6">
-            {faqs.map((faq, idx) => (
-              <div
-                key={idx}
-                className="
-                  rounded-xl border px-6 py-4 shadow-md
-                  bg-[var(--color-card)]
-                  border-[var(--color-border)]
-                  transition-colors duration-300
-                "
-              >
-                <h3
-                  className="
-                    font-bold mb-2
-                    text-[var(--color-primary)]
-                  "
-                >
-                  {faq.question}
-                </h3>
-                <p className="opacity-85">{faq.answer}</p>
+            {activeTab === "features" && (
+              <div className="grid md:grid-cols-2 gap-8">
+                {features.map((feat, i) => (
+                  <GlassCard key={i} className="p-8 hover:bg-white/5 transition-colors">
+                    <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-3">
+                      <FaCheckCircle className="text-blue-500" />
+                      {feat.title}
+                    </h3>
+                    <p className="text-gray-400 leading-relaxed">{feat.desc}</p>
+                  </GlassCard>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            )}
 
-        {/* Call To Action */}
-        <div
-          className="
-            mt-12 pt-8 rounded-xl shadow
-            bg-[var(--color-card)]
-            border-t border-[var(--color-border)]
-            transition-colors duration-300
-          "
-        >
-          <h2
-            className="
-              text-3xl font-bold mb-4
-              text-[var(--color-primary)]
-            "
-          >
-            Want a Custom AI Chatbot Demo?
-          </h2>
-          <p className="mb-4 opacity-85">
-            We deliver tailored proofs‑of‑concept using your data, branding, and
-            integrations. Every project includes onboarding, secure setup, and
-            transparent pricing.
-          </p>
+            {activeTab === "integrations" && (
+              <GlassCard className="p-12 text-center">
+                <h2 className="text-2xl font-bold text-white mb-8">Connects with your favorite tools</h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+                  {integrations.map((tool, i) => (
+                    <div key={i} className="flex flex-col items-center gap-4 group">
+                      <div className="w-20 h-20 rounded-2xl bg-white p-4 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <img src={tool.icon} alt={tool.name} className="w-full h-full object-contain" />
+                      </div>
+                      <span className="text-gray-400 font-medium group-hover:text-white">{tool.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </GlassCard>
+            )}
 
+            {activeTab === "security" && (
+              <div className="grid md:grid-cols-2 gap-8">
+                <GlassCard className="p-8 border-l-4 border-l-green-500">
+                  <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                    <FaLock className="text-green-500" /> Enterprise Grade
+                  </h3>
+                  <ul className="space-y-4">
+                    <li className="flex items-start gap-3 text-gray-300">
+                      <FaCheckCircle className="text-green-500 mt-1" />
+                      <span>SOC2 Type II Compliant Infrastructure</span>
+                    </li>
+                    <li className="flex items-start gap-3 text-gray-300">
+                      <FaCheckCircle className="text-green-500 mt-1" />
+                      <span>End-to-End Encryption (AES-256)</span>
+                    </li>
+                    <li className="flex items-start gap-3 text-gray-300">
+                      <FaCheckCircle className="text-green-500 mt-1" />
+                      <span>PII Redaction & Data Masking</span>
+                    </li>
+                  </ul>
+                </GlassCard>
+                <GlassCard className="p-8 border-l-4 border-l-purple-500">
+                  <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                    <FaShieldAlt className="text-purple-500" /> Data Sovereignty
+                  </h3>
+                  <p className="text-gray-300 leading-relaxed mb-6">
+                    We offer flexible deployment options to meet your regulatory needs.
+                    Choose between our secure multi-tenant cloud, dedicated private cloud,
+                    or fully air-gapped on-premise installation.
+                  </p>
+                  <div className="flex gap-4">
+                    <span className="px-3 py-1 rounded bg-purple-500/20 text-purple-300 text-sm font-bold">GDPR</span>
+                    <span className="px-3 py-1 rounded bg-purple-500/20 text-purple-300 text-sm font-bold">HIPAA</span>
+                    <span className="px-3 py-1 rounded bg-purple-500/20 text-purple-300 text-sm font-bold">CCPA</span>
+                  </div>
+                </GlassCard>
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* CTA */}
+        <div className="mt-20 text-center">
           <a
             href="/contact"
-            className="
-              inline-block btn-primary text-lg
-              font-semibold mt-2
-            "
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-blue-600 text-white font-bold text-lg hover:bg-blue-500 transition-colors shadow-lg shadow-blue-500/20"
           >
-            Contact Tfour AI Team
+            <FaComments /> Start Your Free Pilot
           </a>
         </div>
       </div>
     </section>
   );
-}
+};
 
 export default ChatbotDetails;

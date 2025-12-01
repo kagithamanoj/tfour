@@ -5,6 +5,8 @@ import CookieConsent from "react-cookie-consent";
 // Layout Components
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
+import AIChatbot from "./components/sections/AIChatbot";
+
 
 // Main Pages
 import Home from "./pages/home/index.jsx";
@@ -20,7 +22,7 @@ import Resources from "./pages/resources/index.jsx";
 // Solutions
 import Solutions from "./pages/solutions/index.jsx";
 import Dashboard from "./pages/auth/Dashboard.jsx"; // Added under Solutions
-import AIDemos from "./pages/solutions/AI-Demos.jsx";
+import AIDemos from "./pages/solutions/AIDemos.jsx";
 import CaseStudies from "./pages/solutions/CaseStudies.jsx";
 import Services from "./pages/solutions/Services.jsx";
 import Portfolio from "./pages/solutions/Portfolio.jsx";
@@ -32,6 +34,12 @@ import DocumentAI from "./pages/solutions/DocumentAI.jsx";
 import CrmLeadAI from "./pages/solutions/CrmLeadAI.jsx";
 import PrivateLLM from "./pages/solutions/PrivateLLM.jsx";
 
+// Service Pages
+import VideoSynthesis from "./pages/services/VideoSynthesis.jsx";
+import SupplyChain from "./pages/services/SupplyChain.jsx";
+import CodeAgents from "./pages/services/CodeAgents.jsx";
+import VoiceCloning from "./pages/services/VoiceCloning.jsx";
+
 // Legal Pages
 import PrivacyPolicy from "./pages/legal/PrivacyPolicy.jsx";
 import Terms from "./pages/legal/Terms.jsx";
@@ -39,6 +47,9 @@ import CookiePolicy from "./pages/legal/CookiePolicy.jsx";
 
 // FAQ
 import FAQ from "./components/sections/FAQ.jsx";
+
+// Design Preview
+import DesignPreview from "./pages/DesignPreview.jsx";
 
 function App() {
   return (
@@ -67,11 +78,19 @@ function App() {
         <Route path="/solutions/document-ai" element={<DocumentAI />} />
         <Route path="/solutions/crm-lead-ai" element={<CrmLeadAI />} />
         <Route path="/solutions/private-llm" element={<PrivateLLM />} />
+
+        {/* Detailed Service Pages */}
+        <Route path="/services/video-synthesis" element={<VideoSynthesis />} />
+        <Route path="/services/supply-chain" element={<SupplyChain />} />
+        <Route path="/services/code-agents" element={<CodeAgents />} />
+        <Route path="/services/voice-cloning" element={<VoiceCloning />} />
+
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/design-preview" element={<DesignPreview />} />
         {/* Fallback to Home for unknown routes */}
         <Route path="*" element={<Home />} />
       </Routes>
@@ -83,9 +102,23 @@ function App() {
         expires={365}
       >
         This website uses cookies to enhance the user experience.{" "}
-        <a href="/cookie-policy" style={{ color: "#ff9100", textDecoration: "underline" }}>Read our policy</a>.
+        <a href="/cookie-policy" style={{ color: "#ff9100" }}>Read our policy</a>.
       </CookieConsent>
+      <AIChatbot />
       <Footer />
+
+      {/* Global SVG Filter for Logo Transparency */}
+      <svg style={{ width: 0, height: 0, position: 'absolute' }} aria-hidden="true">
+        <filter id="remove-black-bg" colorInterpolationFilters="sRGB">
+          <feColorMatrix
+            type="matrix"
+            values="1 0 0 0 0
+                    0 1 0 0 0
+                    0 0 1 0 0
+                    3 3 3 0 -1"
+          />
+        </filter>
+      </svg>
     </Router>
   );
 }

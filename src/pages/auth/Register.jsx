@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "../../supabaseClient"; // relative import for src/pages/auth/Register.jsx
+import { supabase } from "../../services/supabaseClient"; // relative import for src/pages/auth/Register.jsx
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mnnoldld";
 
@@ -114,7 +114,7 @@ const Register = () => {
               disabled={loading}
               aria-label="Register with Google"
             >
-              <svg width="22" height="22" viewBox="0 0 40 40"><g><path d="M36.27 20.5c0-.98-.087-1.93-.24-2.84H20.5v5.38h8.82c-.38 2.03-1.53 3.72-3.26 4.88v4.02h5.24c3.07-2.82 4.97-6.97 4.97-11.44z" fill="#4285F4"/><path d="M20.5 37c4.24 0 7.8-1.4 10.4-3.79l-5.24-4.02c-1.45.98-3.3 1.56-5.16 1.56-3.97 0-7.34-2.68-8.54-6.28H6.56v4.09C9.08 33.28 14.46 37 20.5 37z" fill="#34A853"/><path d="M11.96 24.47a8.56 8.56 0 010-5.44v-4.09H6.56A16.502 16.502 0 004 20.5a16.5 16.5 0 007.96 14.56l4.09-4.09c-2.35-1.43-4.03-3.89-4.03-6.44z" fill="#FBBC05"/><path d="M20.5 11.8c2.33 0 4.43.8 6.08 2.36l4.55-4.55C28.3 6.95 24.74 5 20.5 5A16.5 16.5 0 004 20.5c0 2.6.62 5.06 1.78 7.22l4.09-4.08c-.62-1.45-.98-3.02-.98-4.72z" fill="#EA4335"/></g></svg>
+              <svg width="22" height="22" viewBox="0 0 40 40"><g><path d="M36.27 20.5c0-.98-.087-1.93-.24-2.84H20.5v5.38h8.82c-.38 2.03-1.53 3.72-3.26 4.88v4.02h5.24c3.07-2.82 4.97-6.97 4.97-11.44z" fill="#4285F4" /><path d="M20.5 37c4.24 0 7.8-1.4 10.4-3.79l-5.24-4.02c-1.45.98-3.3 1.56-5.16 1.56-3.97 0-7.34-2.68-8.54-6.28H6.56v4.09C9.08 33.28 14.46 37 20.5 37z" fill="#34A853" /><path d="M11.96 24.47a8.56 8.56 0 010-5.44v-4.09H6.56A16.502 16.502 0 004 20.5a16.5 16.5 0 007.96 14.56l4.09-4.09c-2.35-1.43-4.03-3.89-4.03-6.44z" fill="#FBBC05" /><path d="M20.5 11.8c2.33 0 4.43.8 6.08 2.36l4.55-4.55C28.3 6.95 24.74 5 20.5 5A16.5 16.5 0 004 20.5c0 2.6.62 5.06 1.78 7.22l4.09-4.08c-.62-1.45-.98-3.02-.98-4.72z" fill="#EA4335" /></g></svg>
               <span>Continue with Google</span>
             </button>
 

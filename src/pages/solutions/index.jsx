@@ -24,11 +24,12 @@ const solutions = [
   },
 ];
 
+import GlassCard from "../../components/common/GlassCard";
+
 const Solutions = () => (
   <section
     className="
       section-padding max-w-6xl mx-auto
-      bg-[var(--color-bg)]
       text-[var(--color-text)]
       transition-colors duration-300
     "
@@ -36,7 +37,7 @@ const Solutions = () => (
     <h1
       className="
         text-4xl font-bold mb-12
-        text-[var(--color-primary)]
+        bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent
       "
     >
       Our Solutions
@@ -44,26 +45,23 @@ const Solutions = () => (
 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {solutions.map(({ icon, title, desc }) => (
-        <div
+        <GlassCard
           key={title}
-          className="
-            card flex flex-col items-center text-center
-            bg-[var(--color-card)]
-            border border-[var(--color-border)]
-            transition hover:-translate-y-1 hover:shadow-lg
-          "
+          className="flex flex-col items-center text-center p-6 h-full hover:shadow-blue-500/20 transition-all duration-300"
         >
-          {icon}
+          <div className="mb-4 p-3 rounded-full bg-blue-500/10 text-blue-400">
+            {React.cloneElement(icon, { className: "text-3xl" })}
+          </div>
           <h2
             className="
-              mt-4 mb-2 text-xl font-bold
-              text-[var(--color-text)]
+              mb-3 text-xl font-bold
+              text-white
             "
           >
             {title}
           </h2>
-          <p className="opacity-85">{desc}</p>
-        </div>
+          <p className="text-gray-300 leading-relaxed">{desc}</p>
+        </GlassCard>
       ))}
     </div>
   </section>

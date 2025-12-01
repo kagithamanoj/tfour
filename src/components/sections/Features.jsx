@@ -1,35 +1,57 @@
 import React from "react";
+import { motion } from "framer-motion";
+import GlassCard from "../common/GlassCard";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
 
 const FeatureCard = ({ icon, title, description }) => (
-  <div
-    className="
-      p-7 rounded-2xl shadow-2xl text-left
-      bg-[var(--color-card)]
-      border border-[var(--color-border)]
-      hover:-translate-y-1 hover:shadow-[var(--color-primary)]/30
-      transition-transform duration-200
-    "
-  >
-    <div
-      className="
-        flex items-center justify-center h-14 w-14 rounded-md mb-3
-        bg-[var(--color-primary)]/20
-        text-[var(--color-primary)]
-        transition-colors duration-300
-      "
-    >
-      {icon}
-    </div>
-    <h3
-      className="
-        text-xl font-extrabold mb-2
-        text-[var(--color-primary)]
-      "
-    >
-      {title}
-    </h3>
-    <p className="opacity-85">{description}</p>
-  </div>
+  <motion.div variants={itemVariants} className="h-full">
+    <GlassCard className="h-full p-6 hover:shadow-blue-500/20 transition-all duration-300 group relative overflow-hidden">
+      {/* Subtle gradient glow effect on hover */}
+      <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+
+      <div className="relative z-10 flex flex-col h-full">
+        <div
+          className="
+            flex items-center justify-center h-12 w-12 rounded-xl mb-5
+            bg-gradient-to-br from-blue-500/10 to-purple-500/10 
+            group-hover:from-blue-500/20 group-hover:to-purple-500/20
+            text-blue-400 group-hover:text-blue-300
+            border border-white/5 group-hover:border-blue-500/30
+            transition-all duration-300 shadow-inner
+          "
+        >
+          {React.cloneElement(icon, { className: "h-6 w-6" })}
+        </div>
+        <h3 className="text-lg font-bold mb-3 text-white group-hover:text-blue-200 transition-colors">
+          {title}
+        </h3>
+        <p className="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+          {description}
+        </p>
+      </div>
+    </GlassCard>
+  </motion.div>
 );
 
 const featuresData = [
@@ -123,35 +145,35 @@ const featuresData = [
 ];
 
 const Features = () => (
-  <section
-    id="features"
-    className="
-      pt-12 pb-24 px-4 min-h-screen
-      bg-[var(--color-bg)]
-      text-[var(--color-text)]
-      transition-colors duration-300
-    "
-  >
+  <section id="features" className="py-8 px-4">
     <div className="max-w-7xl mx-auto">
-      <h2
-        className="
-          text-4xl md:text-5xl font-extrabold mb-4 text-center
-          text-[var(--color-primary)]
-        "
-      >
-        Innovative AI & Deep Learning Features
-      </h2>
-      <p className="text-lg mb-14 max-w-3xl mx-auto text-center opacity-85">
-        From foundational research to applied business impact—discover how our
-        team pushes boundaries of AI in natural language, vision, analytics, and
-        automation domains.
-      </p>
+      <div className="text-center mb-10">
+        <h2
+          className="
+            text-3xl md:text-4xl font-extrabold mb-4
+            bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent
+          "
+        >
+          Innovative AI & Deep Learning Features
+        </h2>
+        <p className="text-lg max-w-3xl mx-auto opacity-85 text-gray-300">
+          From foundational research to applied business impact—discover how our
+          team pushes boundaries of AI in natural language, vision, analytics, and
+          automation domains.
+        </p>
+      </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <motion.div
+        className="grid md:grid-cols-2 lg:grid-cols-4 gap-5"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      >
         {featuresData.map((feature) => (
           <FeatureCard key={feature.title} {...feature} />
         ))}
-      </div>
+      </motion.div>
     </div>
   </section>
 );

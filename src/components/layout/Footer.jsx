@@ -7,198 +7,105 @@ import {
   FaInstagram,
   FaGithub,
 } from "react-icons/fa";
-import logo from "../../assets/logo.png"; // Replace with your transparent HD logo path
+import logo from "../../assets/logo.png";
 
 const Footer = () => (
   <footer
     className="
-      bg-[var(--color-footer-header-bg)]
-      text-[var(--color-footer-header-text)]
-      border-t border-[var(--color-footer-header-border)]
+      bg-[#0F172A]
+      text-gray-300
+      border-t border-white/10
       transition-colors duration-300
     "
   >
-    <div className="max-w-7xl mx-auto px-4 py-12">
+    <div className="max-w-7xl mx-auto px-4 py-16">
       {/* Top Footer Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-10">
         {/* Brand Section */}
-        <div>
-          <Link to="/" className="flex items-center mb-4">
-            <img src={logo} alt="Tfour Technologies Logo" className="h-8" />
-          </Link>
-          <p className="opacity-80 mb-3">
-            Beyond Automation. True Intelligence.
-          </p>
-        </div>
-
-        {/* Quick Links */}
-        <div>
-          <h3
-            className="
-              text-lg font-semibold mb-4
-              text-[var(--color-primary)]
-            "
-          >
-            Quick Links
-          </h3>
-          <ul className="space-y-2 opacity-85">
-            <li>
-              <Link to="/about" className="hover:text-[var(--color-primary)] transition">
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link to="/careers" className="hover:text-[var(--color-primary)] transition">
-                Careers
-              </Link>
-            </li>
-            <li>
-              <Link to="/faq" className="hover:text-[var(--color-primary)] transition">
-                FAQ
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" className="hover:text-[var(--color-primary)] transition">
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Legal */}
-        <div>
-          <h3
-            className="
-              text-lg font-semibold mb-4
-              text-[var(--color-primary)]
-            "
-          >
-            Legal
-          </h3>
-          <ul className="space-y-2 opacity-85">
-            <li>
-              <Link to="/privacy-policy" className="hover:text-[var(--color-primary)] transition">
-                Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link to="/terms" className="hover:text-[var(--color-primary)] transition">
-                Terms of Service
-              </Link>
-            </li>
-            <li>
-              <Link to="/cookie-policy" className="hover:text-[var(--color-primary)] transition">
-                Cookie Policy
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Newsletter */}
-        <div>
-          <h3
-            className="
-              text-lg font-semibold mb-4
-              text-[var(--color-primary)]
-            "
-          >
-            Stay Connected
-          </h3>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="transition-colors duration-300"
-          >
-            <input
-              type="email"
-              placeholder="Your email"
-              className="
-                w-full px-4 py-2 rounded-lg mb-2
-                bg-[var(--color-bg)]
-                border border-[var(--color-footer-header-border)]
-                text-[var(--color-footer-header-text)]
-                focus:outline-none
-                focus:ring-2 focus:ring-[var(--color-primary)]
-              "
+        <div className="col-span-2 md:col-span-1 lg:col-span-1">
+          <Link to="/" className="flex items-center mb-6">
+            <img
+              src={logo}
+              alt="Tfour Technologies"
+              className="h-12 w-auto mb-6 opacity-90"
+              style={{ filter: "url(#remove-black-bg)" }}
             />
-            <button type="submit" className="btn-primary w-full">
-              Subscribe
-            </button>
-          </form>
+          </Link>
+          <p className="text-sm text-gray-400 mb-6 leading-relaxed">
+            Pioneering the future of enterprise intelligence. We build AI agents that don't just automate—they innovate.
+          </p>
+          {/* Social Links */}
+          <div className="flex space-x-4 text-xl">
+            <a href="https://facebook.com" className="hover:text-blue-500 transition" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebook /></a>
+            <a href="https://x.com/TfourTechnologies" className="hover:text-blue-400 transition" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><FaTwitter /></a>
+            <a href="https://www.linkedin.com/in/tfourtechnologies/" className="hover:text-blue-600 transition" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
+            <a href="https://www.instagram.com/tfourtechnologies/" className="hover:text-pink-500 transition" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
+            <a href="https://github.com/TfourTechnologies" className="hover:text-white transition" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FaGithub /></a>
+          </div>
+        </div>
+
+        {/* Services */}
+        <div>
+          <h3 className="text-white font-bold mb-6">Services</h3>
+          <ul className="space-y-3 text-sm">
+            <li><Link to="/services/video-synthesis" className="hover:text-blue-400 transition">Video Synthesis</Link></li>
+            <li><Link to="/services/supply-chain" className="hover:text-blue-400 transition">Supply Chain AI</Link></li>
+            <li><Link to="/services/code-agents" className="hover:text-blue-400 transition">Code Agents</Link></li>
+            <li><Link to="/services/voice-cloning" className="hover:text-blue-400 transition">Voice Cloning</Link></li>
+          </ul>
+        </div>
+
+        {/* Solutions */}
+        <div>
+          <h3 className="text-white font-bold mb-6">Solutions</h3>
+          <ul className="space-y-3 text-sm">
+            <li><Link to="/solutions/chatbot-details" className="hover:text-blue-400 transition">AI Chatbots</Link></li>
+            <li><Link to="/solutions/document-ai" className="hover:text-blue-400 transition">Document AI</Link></li>
+            <li><Link to="/solutions/crm-lead-ai" className="hover:text-blue-400 transition">CRM & Lead AI</Link></li>
+            <li><Link to="/solutions/private-llm" className="hover:text-blue-400 transition">Private LLMs</Link></li>
+            <li><Link to="/solutions/dashboard" className="hover:text-blue-400 transition">Client Dashboard</Link></li>
+          </ul>
+        </div>
+
+        {/* Company */}
+        <div>
+          <h3 className="text-white font-bold mb-6">Company</h3>
+          <ul className="space-y-3 text-sm">
+            <li><Link to="/about" className="hover:text-blue-400 transition">About Us</Link></li>
+            <li><Link to="/careers" className="hover:text-blue-400 transition">Careers</Link></li>
+            <li><Link to="/partner" className="hover:text-blue-400 transition">Partners</Link></li>
+            <li><Link to="/contact" className="hover:text-blue-400 transition">Contact</Link></li>
+            <li><Link to="/faq" className="hover:text-blue-400 transition">FAQ</Link></li>
+          </ul>
+        </div>
+
+        {/* Legal & Newsletter */}
+        <div>
+          <h3 className="text-white font-bold mb-6">Legal</h3>
+          <ul className="space-y-3 text-sm mb-8">
+            <li><Link to="/privacy-policy" className="hover:text-blue-400 transition">Privacy Policy</Link></li>
+            <li><Link to="/terms" className="hover:text-blue-400 transition">Terms of Service</Link></li>
+            <li><Link to="/cookie-policy" className="hover:text-blue-400 transition">Cookie Policy</Link></li>
+          </ul>
         </div>
       </div>
 
       {/* Bottom Footer */}
-      <div
-        className="
-          mt-12 pt-8 flex flex-col sm:flex-row
-          justify-between items-center
-          border-t border-[var(--color-footer-header-border)]
-        "
-      >
-        <p className="text-sm text-center sm:text-left opacity-70 mb-4 sm:mb-0 flex items-center gap-2">
-          <span>
-            © {new Date().getFullYear()} Tfour Technologies. All rights reserved. &nbsp;|&nbsp; 
-          </span>
+      <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p className="text-sm text-gray-500">
+          © {new Date().getFullYear()} Tfour Technologies. All rights reserved.
+        </p>
+        <div className="flex items-center gap-3">
+          <span className="text-xs text-gray-500">Proudly</span>
           <span
-            className="px-3 py-1 rounded-md font-bold uppercase text-white"
+            className="px-3 py-1 rounded-md font-bold uppercase text-white text-xs tracking-widest"
             style={{
               background: '#174ea6',
-              border: '2px solid #174ea6',
-              fontSize: '0.92em',
-              letterSpacing: '2px'
+              border: '1px solid #174ea6',
             }}
           >
             🇺🇸 Made in USA
           </span>
-        </p>
-
-        {/* Social Links */}
-        <div className="flex space-x-5 text-xl">
-          <a
-            href="https://facebook.com"
-            className="hover:text-[var(--color-primary)] transition"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-          >
-            <FaFacebook />
-          </a>
-          <a
-            href="https://x.com/TfourTechnologies"
-            className="hover:text-[var(--color-primary)] transition"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Twitter"
-          >
-            <FaTwitter />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/tfourtechnologies/"
-            className="hover:text-[var(--color-primary)] transition"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-          >
-            <FaLinkedin />
-          </a>
-          <a
-            href="https://www.instagram.com/tfourtechnologies/"
-            className="hover:text-[var(--color-primary)] transition"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <FaInstagram />
-          </a>
-          <a
-            href="https://github.com/TfourTechnologies"
-            className="hover:text-[var(--color-primary)] transition"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-          >
-            <FaGithub />
-          </a>
         </div>
       </div>
     </div>

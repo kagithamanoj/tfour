@@ -1,5 +1,6 @@
 import React from "react";
 import TechStackBanner from "../../components/sections/TechStackBanner.jsx";
+import GlassCard from "../../components/common/GlassCard";
 
 const resources = [
   {
@@ -33,25 +34,18 @@ const resources = [
 ];
 
 const Resources = () => (
-  <div
-    className="
-      min-h-screen flex flex-col
-      bg-[var(--color-bg)]
-      text-[var(--color-text)]
-      transition-colors duration-300
-    "
-  >
-    <section className="pt-8 pb-20 flex-shrink-0">
+  <main className="min-h-screen flex flex-col text-[var(--color-text)]">
+    <section className="pt-20 pb-20 flex-grow">
       <div className="max-w-6xl mx-auto px-4">
         <h1
           className="
             text-5xl font-extrabold mb-8
-            text-[var(--color-primary)]
+            bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent
           "
         >
           Resources & Insights
         </h1>
-        <p className="text-xl mb-12 max-w-3xl opacity-85">
+        <p className="text-xl mb-12 max-w-3xl text-gray-300 leading-relaxed">
           Explore our collection of authoritative resources, including blogs,
           whitepapers, webinars, and case studies designed to help you make
           informed decisions around cloud, AI, and data analytics.
@@ -59,34 +53,26 @@ const Resources = () => (
 
         <div className="grid md:grid-cols-2 gap-8">
           {resources.map(({ type, title, description, link }) => (
-            <a
-              href={link}
-              key={title}
-              className="
-                p-8 rounded-xl shadow-lg flex flex-col
-                bg-[var(--color-card)]
-                border border-[var(--color-border)]
-                hover:-translate-y-1 hover:shadow-2xl
-                transition-all duration-300
-              "
-            >
-              <span
-                className="
-                  text-sm font-semibold mb-2
-                  text-[var(--color-primary)]
-                "
-              >
-                {type}
-              </span>
-              <h2
-                className="
-                  text-2xl font-bold mb-2
-                  text-[var(--color-primary)]
-                "
-              >
-                {title}
-              </h2>
-              <p className="opacity-85">{description}</p>
+            <a href={link} key={title} className="block h-full group">
+              <GlassCard className="p-8 h-full hover:shadow-blue-500/20 transition-all duration-300">
+                <span
+                  className="
+                    text-sm font-bold mb-3 inline-block px-3 py-1 rounded-full
+                    bg-blue-500/10 text-blue-400 border border-blue-500/20
+                  "
+                >
+                  {type}
+                </span>
+                <h2
+                  className="
+                    text-2xl font-bold mb-3
+                    text-white group-hover:text-blue-300 transition-colors
+                  "
+                >
+                  {title}
+                </h2>
+                <p className="text-gray-300 leading-relaxed">{description}</p>
+              </GlassCard>
             </a>
           ))}
         </div>
@@ -94,18 +80,10 @@ const Resources = () => (
     </section>
 
     {/* TechStackBanner: Full width, seamless into footer */}
-    <div
-      className="
-        w-full flex-shrink-0
-        bg-[var(--color-card)]
-        border-t border-[var(--color-border)]
-        transition-colors duration-300
-      "
-      style={{ marginTop: 0, marginBottom: 0 }}
-    >
+    <div className="w-full border-t border-white/10 backdrop-blur-sm bg-slate-900/50">
       <TechStackBanner />
     </div>
-  </div>
+  </main>
 );
 
 export default Resources;

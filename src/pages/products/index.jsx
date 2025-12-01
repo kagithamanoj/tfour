@@ -1,4 +1,5 @@
 import React from "react";
+import GlassCard from "../../components/common/GlassCard";
 
 const products = [
   {
@@ -27,7 +28,6 @@ const Products = () => (
   <section
     className="
       py-20 min-h-screen
-      bg-[var(--color-bg)]
       text-[var(--color-text)]
       transition-colors duration-300
     "
@@ -36,7 +36,7 @@ const Products = () => (
       <h1
         className="
           text-5xl font-extrabold mb-8
-          text-[var(--color-primary)]
+          bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent
         "
       >
         Our Products
@@ -44,7 +44,7 @@ const Products = () => (
       <p
         className="
           text-xl mb-12 max-w-3xl
-          opacity-85
+          text-gray-300 leading-relaxed
         "
       >
         Explore Tfour Technologies’ suite of scalable products designed for
@@ -54,26 +54,20 @@ const Products = () => (
 
       <div className="grid md:grid-cols-2 gap-8">
         {products.map(({ name, description }) => (
-          <div
+          <GlassCard
             key={name}
-            className="
-              p-8 rounded-xl shadow-lg flex flex-col
-              bg-[var(--color-card)]
-              border border-[var(--color-border)]
-              hover:shadow-2xl hover:-translate-y-1
-              transition-all duration-300
-            "
+            className="p-8 hover:shadow-blue-500/20 transition-all duration-300 h-full"
           >
             <h2
               className="
-                text-2xl font-bold mb-2
-                text-[var(--color-primary)]
+                text-2xl font-bold mb-3
+                text-white
               "
             >
               {name}
             </h2>
-            <p className="opacity-85">{description}</p>
-          </div>
+            <p className="text-gray-300 leading-relaxed">{description}</p>
+          </GlassCard>
         ))}
       </div>
     </div>

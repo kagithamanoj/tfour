@@ -1,197 +1,184 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaFileAlt, FaSearch, FaChartPie, FaCogs, FaArrowRight, FaCloudUploadAlt, FaBrain, FaFileContract, FaDatabase, FaChartLine } from "react-icons/fa";
+import GlassCard from "../../components/common/GlassCard";
 
-const useCases = [
-  {
-    title: "Automated Document Summarization",
-    description:
-      "Summarize long contracts, research papers, or regulatory filings instantly. Use multi-level summaries — from bullet points to detailed Q&A — to accelerate reviews.",
-  },
-  {
-    title: "Contextual Search & Answer Extraction",
-    description:
-      "Ask natural language questions about your PDFs, scanned docs, or knowledge base. Get precise answers and context‑aware citations for every query.",
-  },
-  {
-    title: "RAG Pipelines for Custom Workflows",
-    description:
-      "Combine Retrieval Augmented Generation with private corpora, legal documents, or knowledge bases to generate intelligent reports, forms, or narratives.",
-  },
-  {
-    title: "Compliance‑Ready Audit Trails",
-    description:
-      "Track uploads, summaries, and all actions with metadata for legal, finance, and healthcare documentation standards.",
-  },
+const tabs = [
+  { id: "capabilities", label: "Capabilities", icon: <FaCogs /> },
+  { id: "how-it-works", label: "How it Works", icon: <FaChartPie /> },
+  { id: "roi", label: "ROI Calculator", icon: <FaChartLine /> },
 ];
 
-const faqs = [
-  {
-    question: "What formats does Tfour Document AI support?",
-    answer:
-      "We support PDF, DOCX, TXT, Excel, CSV, images (OCR) and more — retaining complex structures like tables, headers, and footnotes.",
-  },
-  {
-    question: "Where is my data processed and stored?",
-    answer:
-      "You choose: Tfour secure cloud, your own Azure/AWS tenancy, or fully on‑prem deployment. Processing zones are auditable and isolated for privacy.",
-  },
-  {
-    question: "Is Document AI safe for regulated industries?",
-    answer:
-      "Yes. Fully HIPAA, GDPR, and SOC2 compliant. All actions are logged, exportable, and private deployments leave zero cloud footprint.",
-  },
-  {
-    question: "Can you integrate with existing DMS or portals?",
-    answer:
-      "Absolutely. We provide ready APIs, SSO/SAML authentication, and webhooks for smooth embedding into enterprise and legal document systems.",
-  },
-  {
-    question: "Do I need AI expertise to use or maintain it?",
-    answer:
-      "Not at all. Tfour Document AI provides intuitive UIs, role‑based access, and no‑code configuration for even advanced extraction or analysis.",
-  },
-];
+const DocumentAI = () => {
+  const [activeTab, setActiveTab] = useState("capabilities");
 
-function DocumentAI() {
   return (
-    <section
-      className="
-        min-h-screen w-full py-20
-        bg-[var(--color-bg)]
-        text-[var(--color-text)]
-        transition-colors duration-300
-      "
-    >
+    <section className="min-h-screen text-[var(--color-text)] bg-[#0F172A] pb-20">
+      {/* Hero Section */}
+      <div className="relative py-32 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-transparent pointer-events-none"></div>
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-block mb-6 p-4 rounded-full bg-purple-500/10 border border-purple-500/20">
+              <FaFileAlt className="text-4xl text-purple-400" />
+            </div>
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Document Intelligence
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-10">
+              Turn static PDFs, contracts, and forms into structured data.
+              Automate processing, extract insights, and search millions of pages in milliseconds.
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
       <div className="max-w-6xl mx-auto px-4">
-        {/* Header */}
-        <h1
-          className="
-            text-5xl font-extrabold mb-8
-            text-[var(--color-primary)]
-          "
-        >
-          Tfour Document AI
-        </h1>
-
-        <p className="mb-12 text-lg max-w-3xl opacity-85">
-          Transform static documents into searchable knowledge. Tfour
-          Document AI extracts insights, enables Q&A, and automates summaries to
-          streamline enterprise data processing and compliance.
-        </p>
-
-        {/* Core Solution Highlights */}
-        <div className="mb-10">
-          <h2
-            className="
-              text-3xl font-semibold mb-3
-              text-[var(--color-primary)]
-            "
-          >
-            Core Solution Highlights
-          </h2>
-          <ul className="list-disc pl-6 space-y-2 opacity-90">
-            <li>Enterprise‑scale ingestion for thousands of docs per day</li>
-            <li>Automatic summarization and key‑point extraction</li>
-            <li>Context‑aware semantic search and highlight responses</li>
-            <li>RAG pipelines for insightful generation and synthesis</li>
-            <li>Access control and detailed audit trails</li>
-            <li>Secure deploys across cloud, hybrid, and on‑premise</li>
-          </ul>
+        {/* Tabs */}
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`
+                flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-300
+                ${activeTab === tab.id
+                  ? "bg-purple-600 text-white shadow-lg shadow-purple-500/25 scale-105"
+                  : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
+                }
+              `}
+            >
+              {tab.icon}
+              <span>{tab.label}</span>
+            </button>
+          ))}
         </div>
 
-        {/* Use Cases */}
-        <div className="mb-10">
-          <h2
-            className="
-              text-3xl font-semibold mb-2
-              text-[var(--color-primary)]
-            "
+        {/* Content Area */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
           >
-            Document AI in Action
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {useCases.map((item, idx) => (
-              <div
-                key={idx}
-                className="
-                  rounded-xl px-6 py-5 shadow-md
-                  bg-[var(--color-card)]
-                  border border-[var(--color-border)]
-                  transition-colors duration-300
-                "
-              >
-                <div className="font-bold mb-2 text-[var(--color-primary)]">
-                  {item.title}
-                </div>
-                <p className="opacity-85">{item.description}</p>
+            {activeTab === "capabilities" && (
+              <div className="grid md:grid-cols-3 gap-8">
+                <GlassCard className="p-8 text-center hover:-translate-y-2 transition-transform">
+                  <div className="w-16 h-16 mx-auto bg-blue-500/20 rounded-full flex items-center justify-center mb-6 text-blue-400 text-3xl">
+                    <FaSearch />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4">Semantic Search</h3>
+                  <p className="text-gray-400">
+                    Find answers, not just keywords. Ask questions like "What is the termination clause?" and get precise citations.
+                  </p>
+                </GlassCard>
+                <GlassCard className="p-8 text-center hover:-translate-y-2 transition-transform">
+                  <div className="w-16 h-16 mx-auto bg-purple-500/20 rounded-full flex items-center justify-center mb-6 text-purple-400 text-3xl">
+                    <FaFileContract />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4">Data Extraction</h3>
+                  <p className="text-gray-400">
+                    Instantly pull structured data (names, dates, amounts) from invoices, receipts, and forms into your database.
+                  </p>
+                </GlassCard>
+                <GlassCard className="p-8 text-center hover:-translate-y-2 transition-transform">
+                  <div className="w-16 h-16 mx-auto bg-green-500/20 rounded-full flex items-center justify-center mb-6 text-green-400 text-3xl">
+                    <FaBrain />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4">Auto-Summarization</h3>
+                  <p className="text-gray-400">
+                    Condense 100-page reports into executive summaries. Generate abstracts and key takeaways automatically.
+                  </p>
+                </GlassCard>
               </div>
-            ))}
-          </div>
-        </div>
+            )}
 
-        {/* FAQs */}
-        <div className="mb-10">
-          <h2
-            className="
-              text-3xl font-semibold mb-4
-              text-[var(--color-primary)]
-            "
-          >
-            FAQ
-          </h2>
-          <div className="space-y-6">
-            {faqs.map((faq, idx) => (
-              <div
-                key={idx}
-                className="
-                  rounded-xl border px-6 py-4 shadow-md
-                  bg-[var(--color-card)]
-                  border-[var(--color-border)]
-                  transition-colors duration-300
-                "
-              >
-                <div className="font-bold mb-2 text-[var(--color-primary)]">
-                  {faq.question}
+            {activeTab === "how-it-works" && (
+              <GlassCard className="p-12">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative">
+                  {/* Step 1 */}
+                  <div className="text-center flex-1 relative z-10">
+                    <div className="w-20 h-20 mx-auto bg-slate-800 rounded-2xl border border-white/10 flex items-center justify-center text-3xl text-blue-400 mb-4 shadow-lg">
+                      <FaCloudUploadAlt />
+                    </div>
+                    <h4 className="text-white font-bold mb-2">1. Upload</h4>
+                    <p className="text-sm text-gray-400">Ingest PDFs, Images, or Word docs via API or Portal.</p>
+                  </div>
+
+                  {/* Arrow */}
+                  <div className="hidden md:block text-gray-600 text-2xl"><FaArrowRight /></div>
+
+                  {/* Step 2 */}
+                  <div className="text-center flex-1 relative z-10">
+                    <div className="w-20 h-20 mx-auto bg-slate-800 rounded-2xl border border-white/10 flex items-center justify-center text-3xl text-purple-400 mb-4 shadow-lg animate-pulse">
+                      <FaBrain />
+                    </div>
+                    <h4 className="text-white font-bold mb-2">2. Process</h4>
+                    <p className="text-sm text-gray-400">OCR + NLP models analyze layout, text, and context.</p>
+                  </div>
+
+                  {/* Arrow */}
+                  <div className="hidden md:block text-gray-600 text-2xl"><FaArrowRight /></div>
+
+                  {/* Step 3 */}
+                  <div className="text-center flex-1 relative z-10">
+                    <div className="w-20 h-20 mx-auto bg-slate-800 rounded-2xl border border-white/10 flex items-center justify-center text-3xl text-green-400 mb-4 shadow-lg">
+                      <FaDatabase />
+                    </div>
+                    <h4 className="text-white font-bold mb-2">3. Action</h4>
+                    <p className="text-sm text-gray-400">Export JSON, trigger workflows, or query via Chat.</p>
+                  </div>
                 </div>
-                <p className="opacity-85">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+              </GlassCard>
+            )}
 
-        {/* CTA */}
-        <div
-          className="
-            mt-12 pt-8 rounded-xl shadow
-            bg-[var(--color-card)]
-            border-t border-[var(--color-border)]
-            transition-colors duration-300
-          "
-        >
-          <h2
-            className="
-              text-3xl font-bold mb-4
-              text-[var(--color-primary)]
-            "
-          >
-            Ready for Document Intelligence?
-          </h2>
-          <p className="mb-4 opacity-85">
-            Evaluate Document AI with your own documents—request sandbox access
-            or schedule a guided enterprise pilot with our AI team.
-          </p>
-          <a
-            href="/contact"
-            className="
-              inline-block btn-primary text-lg
-              font-semibold mt-2
-            "
-          >
-            Contact Tfour Document AI
-          </a>
-        </div>
+            {activeTab === "roi" && (
+              <GlassCard className="p-12">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-6">Calculate Your Savings</h3>
+                    <p className="text-gray-300 mb-8">
+                      Manual document processing is slow and error-prone. See how much time and money you can save with Tfour Document AI.
+                    </p>
+                    <div className="space-y-6">
+                      <div className="flex justify-between items-center p-4 rounded-lg bg-white/5">
+                        <span className="text-gray-300">Manual Processing Cost</span>
+                        <span className="text-red-400 font-bold">$15.00 / doc</span>
+                      </div>
+                      <div className="flex justify-between items-center p-4 rounded-lg bg-white/5 border border-green-500/30">
+                        <span className="text-white">Tfour AI Cost</span>
+                        <span className="text-green-400 font-bold">$0.10 / doc</span>
+                      </div>
+                      <div className="pt-4 border-t border-white/10">
+                        <div className="flex justify-between items-center">
+                          <span className="text-xl font-bold text-white">Total Savings</span>
+                          <span className="text-3xl font-bold text-green-400">99.3%</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-gradient-to-br from-blue-900/50 to-purple-900/50 p-8 rounded-2xl border border-white/10 text-center">
+                    <div className="text-6xl font-extrabold text-white mb-2">10x</div>
+                    <div className="text-blue-300 font-bold uppercase tracking-widest mb-8">Faster Turnaround</div>
+                    <p className="text-gray-300 italic">
+                      "We reduced our contract review time from 3 days to 2 hours using Tfour's extraction engine."
+                    </p>
+                    <div className="mt-4 text-sm font-bold text-blue-400">— Legal Tech Client</div>
+                  </div>
+                </div>
+              </GlassCard>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
-}
+};
 
 export default DocumentAI;

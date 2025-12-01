@@ -7,6 +7,8 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.78.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.24",
     "react": "^18.2.0",
     "react-cookie-consent": "^9.0.0",
     "react-dom": "^18.2.0",
@@ -14,7 +16,8 @@
     "react-phone-number-input": "^3.4.12",
     "react-router-dom": "^6.22.2",
     "react-sparkle": "^2.0.0",
-    "supabase": "^2.48.3"
+    "supabase": "^2.48.3",
+    "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.0",
