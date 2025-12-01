@@ -36,8 +36,16 @@ const features = [
   }
 ];
 
+import SEO from "../../components/common/SEO";
+
 const Home = () => (
   <main className="min-h-screen flex flex-col text-[var(--color-text)] bg-[#0F172A]">
+    <SEO
+      title="Enterprise AI Automation & Custom LLMs"
+      description="Tfour Technologies empowers enterprises with cutting-edge Generative AI, autonomous agents, and custom LLM solutions. Transform your business today."
+      keywords="Generative AI, Enterprise Automation, Custom LLMs, AI Agents, Business Intelligence, Tfour Technologies"
+    />
+
     {/* 1. Hero Section */}
     <ModernHero />
 
